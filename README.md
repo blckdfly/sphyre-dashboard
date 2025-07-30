@@ -1,6 +1,53 @@
-# Getting Started with Create React App
+# Sphyre Issuers
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Docker Usage
+
+This project includes a Dockerfile for containerized deployment.
+
+### Building the Docker Image
+
+```bash
+docker build -t sphyre-issuers .
+```
+
+### Running the Docker Container
+
+```bash
+docker run -p 3000:3000 sphyre-issuers
+```
+
+This will start the application and make it available at http://localhost:3000
+
+### Environment Variables
+
+To pass environment variables to the container, use the `-e` flag:
+
+```bash
+docker run -p 3000:3000 -e REACT_APP_API_URL=https://api.example.com sphyre-issuers
+```
+
+### Docker Compose (Optional)
+
+For more complex setups, you can use Docker Compose. Create a `docker-compose.yml` file with:
+
+```yaml
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=https://api.example.com
+```
+
+Then run:
+
+```bash
+docker-compose up
+```
 
 ## Available Scripts
 
